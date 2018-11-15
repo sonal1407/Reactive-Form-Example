@@ -1,0 +1,101 @@
+
+<br />
+<div class="card mainForm">
+
+  <h3 class="card-header info-color white-text text-center py-4 bg-secondary">
+    <strong>Reactive Form</strong>
+  </h3>
+
+
+  <div class="card-body px-lg-5">
+
+    <form class="text-center border border-light p-5" [formGroup]="reactiveForm" novalidate>
+
+      <!-- Create a input box for First Name section-->
+      <div class="form-group">
+        <input type="text" class="form-control" id="firstName" placeholder="Enter the First Name" formControlName="firstName">
+
+          <div *ngIf="(reactiveForm.get('firstName').touched || reactiveForm.get('firstName').dirty ) && reactiveForm.get('firstName').errors" class="alert alert-danger">
+            <div *ngIf="reactiveForm.get('firstName').errors.required">
+             Required First Name cannot be left blank.
+            </div>
+            <div *ngIf="reactiveForm.get('firstName').errors.minlength">
+              Requried minimum 5 character.
+            </div>
+            <div *ngIf="reactiveForm.get('firstName').errors.pattern">
+              Requried only character.
+            </div>
+          </div>
+      </div>
+      <!--End First Name Section-->
+
+      <!-- Create a input box for Last Name section-->
+      <div class="form-group">
+        <input type="text" class="form-control" id="lastName" placeholder="Enter the Last Name" formControlName="lastName">
+        
+        <div *ngIf="(reactiveForm.get('lastName').touched || reactiveForm.get('lastName').dirty ) && reactiveForm.get('lastName').errors" class="alert alert-danger">          
+            <div *ngIf="reactiveForm.get('lastName').errors.required">
+              Required Last Name cannot be left blank.
+            </div>            
+            <div *ngIf="reactiveForm.get('lastName').errors.maxlength">
+              Accept only Maximum 8 character.
+            </div>  
+            <div *ngIf="reactiveForm.get('lastName').errors.pattern">
+                Requried only character.
+            </div>
+        </div>
+      </div>
+      <!--End Last Name section-->
+
+       <!-- Create a input box for Email section-->
+      <div class="form-group">   
+        <input type="text" class="form-control" id="email" placeholder="Enter the Email" formControlName="email">
+          
+        <div *ngIf="(reactiveForm.get('email').touched || reactiveForm.get('email').dirty ) && reactiveForm.get('email').errors" class="alert alert-danger">
+            <div *ngIf="reactiveForm.get('email').errors.required">
+              Required Email cannot be left blank.
+            </div>
+            <div *ngIf="reactiveForm.get('email').errors.pattern">
+             Requried valid Email Address.
+            </div>
+          </div>
+      </div>
+      <!--End Email section-->
+
+       <!-- Create a input box for Age section-->
+      <div class="form-group">
+        <input type="text" class="form-control" id="age" formControlName="age">
+      </div>
+      <!--End Age section-->
+
+      <!-- Create a input box for phone number section-->
+      <div class="form-group">
+        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your Phone Number" formControlName="phoneNumber">
+        
+        <div *ngIf="(reactiveForm.get('phoneNumber').touched || reactiveForm.get('phoneNumber').dirty ) && reactiveForm.get('phoneNumber').errors" class="alert alert-danger">
+          <div *ngIf="reactiveForm.get('phoneNumber').errors.required">
+            Required Phone number cannot be left blank.
+          </div>
+          <div *ngIf="reactiveForm.get('phoneNumber').errors.minlength">
+            Required Maximum 10 Digits phone number.
+          </div>
+          <div *ngIf="reactiveForm.get('phoneNumber').errors.pattern">
+            Required only numeric value.
+          </div>
+        </div>
+    </div>
+    <!--End phone nummber section-->
+
+    <!--Submit Button Form Save form data-->
+      <div class="form-group">
+          <button type="submit" (click)="addData()" [disabled]="!reactiveForm.valid" class="btn btn-success btn-block">Save</button>
+      </div>
+      
+    </form>
+
+    <h5 class="card-header info-color white-text text-center py-4 bg-secondary">
+      Reactive Form Value:{{reactiveForm.value | json}}
+    </h5>
+    
+  </div>
+</div>
