@@ -9,7 +9,7 @@
 
   <div class="card-body px-lg-5">
 
-    <form class="text-center border border-light p-5" [formGroup]="reactiveForm" novalidate>
+    <form class="text-center border border-light p-5" [formGroup]="reactiveForm" (ngSubmit)="addData(reactiveForm)" novalidate>
 
       <!-- Create a input box for First Name section-->
       <div class="form-group">
@@ -88,7 +88,7 @@
 
     <!--Submit Button Form Save form data-->
       <div class="form-group">
-          <button type="submit" (click)="addData()" [disabled]="!reactiveForm.valid" class="btn btn-success btn-block">Save</button>
+          <button type="submit" [disabled]="!reactiveForm.valid" class="btn btn-success btn-block">Save</button>
       </div>
       
     </form>
@@ -96,6 +96,6 @@
     <h5 class="card-header info-color white-text text-center py-4 bg-secondary">
       Reactive Form Value:{{reactiveForm.value | json}}
     </h5>
-    
+
   </div>
 </div>
